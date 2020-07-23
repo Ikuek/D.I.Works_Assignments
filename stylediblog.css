@@ -1,0 +1,115 @@
+
+a:link { color: white; }
+a:visited { color: white; }
+a { text-decoration: none;}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+}
+
+header ul {
+    margin: 0;
+    height: 100%;
+}
+
+header ul li {
+    float: left;
+    padding-right: 20px;
+    height: 100%;
+    list-style: none;
+    color: white;
+    font-size: 15px;
+    display: flex;
+	align-items: center;
+}
+
+main{
+    clear: both;
+}
+
+.main-container{
+    width: 98%;
+    margin: 0 auto;
+}
+.mainimg {
+    object-fit: cover;
+    width: 100%;
+}
+.slider{
+    /* スライドを表示させる画面の横幅(≒スライド１枚あたりの横幅) */
+    width: 1600px;
+    /* スライドを表示させる画面の縦幅(≒スライド１枚あたりの縦幅) */
+    height: 1066px;
+    /* はみ出した要素は隠れるようにする */
+    overflow: hidden;
+}
+.slider__container{
+    /* スライドを表示する画面とスライド１枚をぴったり合わせるため設定 */
+    padding: 0;
+    margin: 0;
+    
+    /* 子要素でfloatを利用しているため設定 */
+    overflow: hidden;
+
+    list-style: none;
+}
+
+.left {
+    width: 68%;
+    float: left;
+    border: solid blue;
+    margin-bottom: 20px;
+}
+
+.left h1 {
+    border-left: solid 5px black;
+    border-bottom: solid 3px black;
+}
+
+/*** 記事中身 ***/
+.itemlist {
+	display: flex;
+	flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: silver;
+}
+.itemlist li {
+	flex-basis: 24%;
+	padding: 5px;
+    box-sizing: border-box;
+    list-style: none;
+}
+.itemlist dl {
+	margin: 0;
+    text-align: center;
+    font-size: small;
+}
+.itemlist img {
+	width: 100%;
+	height: auto;
+}
+
+.right {
+    width: 30%;
+    float: left;
+    border: solid red;
+    margin-bottom: 20px
+}
+.right h3 {
+    border-bottom: solid silver 3px;
+}
+.right ul li {
+    list-style: none;
+}
+footer {
+    clear: both;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
