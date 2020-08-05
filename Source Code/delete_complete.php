@@ -41,25 +41,49 @@ try {
 <head>
 <meta charset="UTF-8">
 <title>アカウント削除完了</title>
-<link rel="stylesheet" type="text/css" href="account.css">
+<link rel="stylesheet" type="text/css" href="stylediblog.css">
 </head>
-    <body>
-        <header>
-            <h1>アカウント削除完了画面</h1>
-        </header>
+<body>
+    <a href="d.i.blog.php">
+        <img src="diblog_logo.jpg">
+    </a>
+    <header>
+        <ul>
+            <li><a href="d.i.blog.php">トップ</a></li>
+            <li>プロフィール</li>
+            <li>D.I.Blogについて</li>
+            <li>登録フォーム</li>
+            <li>問合せ</li>
+            <li>その他</li>
+            <?php if(isset($authority)&&($authority == 1)):?>
+                <?= '<li><a href="list.php">アカウント一覧</a></li>';?>
+                <?= '<li><a href="regist.php">アカウント登録</a></li>';?>
+            <?php endif; ?>
+            <?php if(isset($_SESSION['id']) === false):?>
+                <?= '<li><a href="login.php">ログイン</a></li>';?>
+            <?php endif; ?>
+        </ul>
+    </header>
         <main>
-            <div class="form">
-                <p>アカウント削除完了画面</p>
-                <div class="complete">
-                    <p>削除完了しました</p>
-                </div>
-            
-                <div  class="buttons">
-                    <a href="d.i.blog.php">
-                        <button type="button">TOPページへ戻る</button>
-                    </a>
+            <div class="main-container">
+                <h1>アカウント削除完了画面</h1>
+
+                <div class="TableStyle">
+                    <div class="complete">
+                        <p>削除完了しました</p>
+                    </div>
+                    <div class="complete">
+                        <a href="d.i.blog.php">
+                            <button type="button">TOPページへ戻る</button>
+                        </a>
+                    </div>
+                    
+                        
                 </div>
             </div>
         </main>
-    </body>
+            <footer>
+            Copyright D.I.works| D.I. blog is the one which provides A to Z about programming
+            </footer>
+</body>
 </html>

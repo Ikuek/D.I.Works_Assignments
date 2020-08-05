@@ -4,6 +4,8 @@ if(!empty($_SESSION['authority'])){
     $authority = $_SESSION['authority'];
 }
 
+    unset($_POST);
+    unset($_SESSION['member']);
 
 ?>
 
@@ -28,10 +30,12 @@ if(!empty($_SESSION['authority'])){
   </script>
 </head>
     <body>
-        <img src="diblog_logo.jpg">
+        <a href="d.i.blog.php">
+            <img src="diblog_logo.jpg">
+        </a>
         <header>
             <ul>
-                <li>トップ</li>
+                <li><a href="d.i.blog.php">トップ</a></li>
                 <li>プロフィール</li>
                 <li>D.I.Blogについて</li>
                 <li>登録フォーム</li>
@@ -93,8 +97,7 @@ if(!empty($_SESSION['authority'])){
                             <img src="pic8.jpg">
                             <dl>HTML5の可能性</dl>
                         </li>
-
-                    </div>
+                    </ul>
                 </div>
                 <div class="right">
                     <h3>人気の記事</h3>

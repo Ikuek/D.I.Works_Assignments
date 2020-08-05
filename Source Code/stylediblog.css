@@ -3,6 +3,7 @@ a:link { color: white; }
 a:visited { color: white; }
 a { text-decoration: none;}
 
+/**** 共通 ****/
 header {
     width: 100%;
     height: 50px;
@@ -37,6 +38,26 @@ main{
     object-fit: cover;
     width: 100%;
 }
+
+footer {
+    clear: both;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 5%;
+}
+.error {
+    color: red;
+    font-size: x-small;
+    text-align: left;
+    padding-left: 10px;
+}
+
+/********　TOPページ　レイアウト　*********/
+
 .slider{
     /* スライドを表示させる画面の横幅(≒スライド１枚あたりの横幅) */
     width: 1600px;
@@ -62,10 +83,22 @@ main{
     border: solid blue;
     margin-bottom: 20px;
 }
-
 .left h1 {
     border-left: solid 5px black;
     border-bottom: solid 3px black;
+}
+
+.right {
+    width: 30%;
+    float: left;
+    border: solid red;
+    margin-bottom: 20px
+}
+.right h3 {
+    border-bottom: solid silver 3px;
+}
+.right ul li {
+    list-style: none;
 }
 
 /*** 記事中身 ***/
@@ -92,24 +125,79 @@ main{
 	height: auto;
 }
 
-.right {
-    width: 30%;
-    float: left;
-    border: solid red;
-    margin-bottom: 20px
+/*****　共通レイアウト　*****/
+.TableStyle {
+    width: 50%;
+    margin: 0 auto;
 }
-.right h3 {
-    border-bottom: solid silver 3px;
+.TableStyle th {
+    padding: 5px;
+    text-align: left;
 }
-.right ul li {
-    list-style: none;
+.TableStyle td  {
+    text-align: left;
+    padding: 10px;
+    border: solid 0px;
 }
-footer {
-    clear: both;
-    width: 100%;
-    height: 50px;
-    background-color: black;
-    color: white;
+.buttons {
+    height: 70px;
+    width: 50%;
+    padding: 10px;
     text-align: center;
-    line-height: 50px;
+}
+/*ログイン*/
+.LoginTable{
+    padding: 5% 10%;
+}
+td.login {
+    font-size: large;
+    font-weight: 900; 
+}
+
+/* 完了画面　共通 */
+.complete {
+    text-align: center;
+    margin-top: 20%;
+}
+.complete > p {
+    font-size: xx-large;
+    margin: 0 auto;
+
+}
+
+/***リスト***/
+.TableList {
+    margin: 0 auto;
+    border-collapse:  collapse;
+    font-size: small;
+}
+.TableList th, td{
+    text-align: center;
+    padding: 2px;
+    font-size: small;
+    border: solid 1px;
+}
+.TableList th {
+    background: lightgray;
+    padding: 0;
+    margin: 0;
+}
+.ListTable {
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 5%;
+    border-collapse: collapse;
+}
+.TextBox{
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+select { width: 100%; }
+
+
+/*共通テーブル*/
+table {
+    margin: 0 auto;
 }

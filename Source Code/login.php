@@ -8,8 +8,8 @@ try {
         $mail = filter_input(INPUT_POST, 'mail');
         $pass = filter_input(INPUT_POST, 'password');
         
-        //エラーチェック
-        $err = [];
+        //未入力チェック
+        //$err = [];
         if($mail == ''){
             $err['mail'] = 'メールアドレスを入力してください。';
         }
@@ -18,8 +18,8 @@ try {
         }
 
         
-        //エラーなければ
-        if(count($err) == 0) {
+        //入力あれば
+        if(!isset($err)) {
 
             mb_internal_encoding("UTF-8");
             //DB接続
@@ -37,7 +37,7 @@ try {
 
             foreach ($rows as $row){
                 $password = $row['password'];
-                //var_dump($$password);
+                $email = $row['email'];
 
                 if(password_verify($pass,$password)) {
                     //ログインしているかの判断のため↓
@@ -48,10 +48,11 @@ try {
                     exit();
                 }
             }
-            
-            $err['login'] = 'メールアドレスかパスワードに誤りがあります。';
-            $_SESSION = array();
-            session_destroy();
+
+            if (!isset($email)||($password)) {
+                $err['login'] = 'メールアドレスかパスワードに誤りがあります。';
+            }
+
         }
     }
 
@@ -67,37 +68,64 @@ try {
 <head>
 <meta charset="UTF-8">
 <title>ログイン画面</title>
-<link rel="stylesheet" type="text/css" href="account.css">
+<link rel="stylesheet" type="text/css" href="stylediblog.css">
 </head>
 <body>
+    <a href="d.i.blog.php">
+        <img src="diblog_logo.jpg">
+    </a>
     <header>
-        <h1>ログイン画面</h1>
+        <ul>
+            <li><a href="d.i.blog.php">トップ</a></li>
+            <li>プロフィール</li>
+            <li>D.I.Blogについて</li>
+            <li>登録フォーム</li>
+            <li>問合せ</li>
+            <li>その他</li>
+            <?php if(isset($authority)&&($authority == 1)):?>
+                <?= '<li><a href="list.php">アカウント一覧</a></li>';?>
+                <?= '<li><a href="regist.php">アカウント登録</a></li>';?>
+            <?php endif; ?>
+            <?php if(isset($_SESSION['id']) === false):?>
+                <?= '<li><a href="login.php">ログイン</a></li>';?>
+            <?php endif; ?>
+        </ul>
     </header>
-    <form action="login.php" method="POST" class="form">
-        <p>ログイン画面</p>
-            <?php if(isset($err['login'])):?>
-                <td class="error"><?php echo $err['login'];?></td>
-            <?php endif;?>
+    <main>
+        <div class="main-container">
+            <h1>ログイン画面</h1>
+                <?php if(isset($err['login'])):?>
+                    <div class="error"><?php echo $err['login'];?></div>
+                <?php endif;?>
 
-        <table class="TableStyle">
-            <tr>
-                <td class="login"><label>メールアドレス</label></td>
-                <td><input type="text" name="mail"></td>
-                <?php if(isset($err['mail'])):?>
-                    <td class="error"><?php echo $err['mail'];?></td>
-                <?php endif;?>
-            </tr>
-            <tr>
-                <td class="login"><label>パスワード</label></td>
-                <td><input type="password" name="password"></td>
-                <?php if(isset($err['pass'])):?>
-                    <td class="error"><?php echo $err['pass'];?></td>
-                <?php endif;?>
-            </tr>
-        </table>
-        <div  class="buttons">
-            <button type="submit" name="login">ログイン</button>
+            <div class="TableStyle">
+                <form action="login.php" method="POST">
+                    <table>
+                        <tr>
+                            <td class="login"><label>メールアドレス</label></td>
+                            <td><input type="text" name="mail" value="<?php echo isset($_POST['mail'])? $mail : '';?>"></td>
+                            <?php if(isset($err['mail'])):?>
+                                <td class="error"><?php echo $err['mail'];?></td>
+                            <?php endif;?>
+                        </tr>
+                        <tr>
+                            <td class="login"><label>パスワード</label></td>
+                            <td><input type="password" name="password"></td>
+                            <?php if(isset($err['pass'])):?>
+                                <td class="error"><?php echo $err['pass'];?></td>
+                            <?php endif;?>
+                        </tr>
+                        <tr> 
+                            <td></td>
+                            <td><button type="submit" name="login">ログイン</button></td>
+                        </tr>
+                </table>
+                </form>
+            </div>
         </div>
-    </form>
+    </main>
+    <footer>
+        Copyright D.I.works| D.I. blog is the one which provides A to Z about programming
+    </footer>
 </body>
 </html>
